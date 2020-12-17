@@ -4,14 +4,14 @@ import Styled, { css } from "styled-components";
 import { isIphoneX } from "./utils/iPhoneX";
 
 // Config
-const BOTTOM_PADDING = 20;
+const BOTTOM_PADDING = 10;
 const BOTTOM_PADDING_IPHONE_X = 30;
 
 const floatingMarginBottom = css`
   margin-bottom: ${isIphoneX() ? BOTTOM_PADDING_IPHONE_X : BOTTOM_PADDING}px;
 `;
 const floatingMarginHorizontal = css`
-  margin-horizontal: 20px;
+  margin-horizontal: ${(p) => p.marginHorizontal || 10}px;
 `;
 
 const floatingRoundCorner = css`
@@ -33,11 +33,17 @@ const BottomTabBarWrapper = Styled.View`
     padding-top: ${(p) => p.topPadding};
     padding-horizontal: ${(p) => p.horizontalPadding};
     background-color: ${(p) => p.tabBarBackground};
+    padding-left: ${(p) => p.topPadding};
+    padding-right: ${(p) => p.topPadding};
 	${(p) => p.shadow && SHADOW};
 
   `;
 
 const calculateDotSize = (size) => {
+  if(typeof size == 'number') {
+    return size;
+  }
+
   switch (size) {
     case "small":
       return 40;
