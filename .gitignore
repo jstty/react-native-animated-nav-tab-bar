@@ -2,6 +2,9 @@
 *.log
 npm-debug.log
 
+# OS Files
+.DS_Store
+
 # Runtime data
 tmp
 build
